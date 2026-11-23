@@ -1,23 +1,36 @@
-# In God we trust, everyone else bring the data
+# Marketing Campaign Statistical Analysis
 
-**Track:** Module 5 — Evaluation & strategy · **When:** Week 7, Day 5 · **Status:** Required
+Analysis of five anonymised marketing campaigns to assess CPA and conversion performance, test whether observed differences are statistically reliable, and develop a cautious, illustrative **$500,000 monthly budget allocation**.
 
-This repository contains everything you need for this lab.
+## How to run
+1. Open `lab_statistical_analysis_STUDENT.ipynb` in VS Code or Jupyter with a Python kernel.
+2. Ensure the source archive `criteo_attribution_dataset.tsv.gz` is present at the project root.
+3. Install any missing Python dependencies used by the notebook (including `numpy`, `pandas`, `scipy`, `statsmodels`, `matplotlib`, and `seaborn`).
+4. **Restart Kernel → Run All**. Check that the notebook completes without errors and regenerates the files in `outputs/`.
 
-## Files
+## Method and results
+The notebook builds daily campaign metrics, visualises CPA and conversion-rate distributions, runs pairwise Welch t-tests with Cohen's d and Fisher's exact tests, applies Bonferroni and BH-FDR corrections, estimates simulated statistical power, and calculates bootstrap confidence intervals.
 
-- [`instructions.md`](./instructions.md) — the lab instructions
-- [`rubric.md`](./rubric.md) — how your submission is graded; this is what the AI reviewer checks your PR against
+**Key results:** 9/10 CPA comparisons and 9/10 conversion-rate comparisons were significant; all 9 remained significant after both multiple-comparison corrections. Campaign `30801593` had the lowest observed mean daily CPA, while `10341182` had the highest conversion rate (23.64%). See `lab_proof.md` for the evidence and `outputs/executive_memo.md` for the decision rationale.
 
-## How to complete this lab
+## File map
+| Path | Purpose |
+|---|---|
+| `lab_statistical_analysis_STUDENT.ipynb` | Complete reproducible analysis |
+| `criteo_attribution_dataset.tsv.gz` | Source data archive |
+| `instructions.md` | Lab instructions |
+| `lab_proof.md` | Reviewer entry point: workflow, evidence, outputs, limitations |
+| `outputs/marketing_data.csv` | Processed analysis data |
+| `outputs/group_metrics_overview.png` | Campaign metrics overview |
+| `outputs/group_distributions.png` | Daily metric distributions |
+| `outputs/metric_comparison_heatmap.png` | Pairwise CPA p-values |
+| `outputs/rate_comparison.png` | Campaign conversion rates |
+| `outputs/correction_comparison.png` | Significance before and after corrections |
+| `outputs/power_analysis_cpa.png` | Simulated CPA detection power |
+| `outputs/executive_memo.md` | Findings, budget scenario and caveats |
+| `reflection.md` | Optional learning reflection, if completed |
 
-1. **Fork** this repository.
-2. Do the work described in `instructions.md`, committing to your fork.
-3. Open a **pull request** back into this repository.
-4. You'll receive **AI feedback** on your PR based on `rubric.md`. Address any blocking feedback and push updates to the same PR.
+## Important limitations
+Costs are anonymised and revenue is unavailable. The CPA ranking is therefore based on **anonymised cost units**, not verified dollars; ROAS and profit cannot be calculated. The $500,000 allocation is illustrative and must be tested against actual cost, revenue and campaign capacity before implementation. Power estimates rely on simulated assumptions.
 
-## Submission hygiene
-
-- Keep this repository scoped to this lab only — no unrelated projects or personal files.
-- Use clear, descriptive filenames.
-- Remove secrets, API keys, and tokens before committing.
+For reviewer evidence and the main conclusions, start with **[`lab_proof.md`](lab_proof.md)**.
