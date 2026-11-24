@@ -5,8 +5,8 @@ Run `lab_statistical_analysis_STUDENT.ipynb` from top to bottom. The notebook lo
 
 ## Input and workflow
 - **Input:** `criteo_attribution_dataset.tsv.gz` (source archive); processed analysis data: `outputs/marketing_data.csv`.
-- **Groups:** Five anonymised campaign IDs; 31 daily observations for four campaigns and 30 for one (155 daily observations total).
-- **Metrics:** CPA, click-through rate and conversion rate; campaign totals and daily distributions.
+- **Groups:** Five anonymised campaign IDs, each with 31 campaign-day observations (155 total); one campaign has 30 valid CPA observations. No campaign-days are missing within the observed day-index range.
+- **Metrics:** CPA, click-through rate (clicks / impressions) and conversion rate (conversions / clicks); campaign totals and daily distributions.
 - **Tests:** Pairwise Welch t-tests and Cohen's d for daily CPA and conversion rate; Fisher's exact tests for converted/non-converted clicks; Bonferroni and Benjamini–Hochberg (BH-FDR) corrections; simulated power and bootstrap 95% confidence intervals.
 - **Decision output:** Provisional $500,000 allocation based on CPA rankings, prioritising lower observed CPA, with a minimum of 5% and maximum of 35% per campaign. ROAS could not be included because revenue is unavailable. See `outputs/executive_memo.md`.
 
@@ -17,6 +17,7 @@ Run `lab_statistical_analysis_STUDENT.ipynb` from top to bottom. The notebook lo
 - **Non-significant conversion pair:** Campaigns `5061834` and `30801593` (Fisher p ≈ 0.3109).
 - **Highest observed conversion rate:** `10341182` (23.64%); **lowest:** `17686799` (5.17%).
 - **Lowest observed mean daily CPA:** `30801593` (~0.0012 in anonymised cost units).
+- **Confidence intervals:** Bootstrap 95% confidence intervals were calculated for mean daily CPA and mean daily conversion rate across all five campaigns (10 intervals total). The complete table is included in `outputs/executive_memo.md`.
 - **Power simulation:** Under the notebook's assumed 15% daily CPA standard deviation, 31 days are sufficient for simulated 15–20% differences at 80% power, but not for 5–10% differences. This simulation is assumption-dependent.
 
 ### Decision considerations
