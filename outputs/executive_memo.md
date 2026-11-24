@@ -54,7 +54,6 @@ is unavailable. Each campaign receives between 5% and 35%.
 - **Dataset limitations:** Advertising costs are anonymised, and revenue is unavailable. Actual dollar CPA, ROAS, profit and profit margin cannot be established.
 - **Multiple comparisons:** Bonferroni and BH-FDR corrections were applied separately to each family of ten comparisons.
 - **Confidence intervals:** Bootstrap intervals quantify uncertainty in average daily CPA under the sampling assumptions.
-- **Practical significance:** Statistically significant differences do not necessarily translate into higher profit.
 - **Ranking fairness:** Campaigns 5061834 and 17686799 have no statistically significant difference in daily CPA (p = 0.7597). Their different CPA rankings do not prove that one is better.
 - **Budget scalability:** Campaign 30801593 has the lowest observed CPA and receives the highest proposed allocation. However, we cannot confirm that it can absorb a larger budget while maintaining the same CPA.
 - **Practical significance:** Statistical significance does not automatically mean financial importance. Differences must be assessed against actual spending, revenue, profitability and business impact before reallocating budgets.

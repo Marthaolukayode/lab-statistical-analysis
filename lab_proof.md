@@ -8,7 +8,7 @@ Run `lab_statistical_analysis_STUDENT.ipynb` from top to bottom. The notebook lo
 - **Groups:** Five anonymised campaign IDs; 31 daily observations for four campaigns and 30 for one (155 daily observations total).
 - **Metrics:** CPA, click-through rate and conversion rate; campaign totals and daily distributions.
 - **Tests:** Pairwise Welch t-tests and Cohen's d for daily CPA and conversion rate; Fisher's exact tests for converted/non-converted clicks; Bonferroni and Benjamini–Hochberg (BH-FDR) corrections; simulated power and bootstrap 95% confidence intervals.
-- **Decision output:** Provisional CPA-based allocation of $500,000, capped at 35% per campaign. See `outputs/executive_memo.md`.
+- **Decision output:** Provisional $500,000 allocation based on CPA rankings, prioritising lower observed CPA, with a minimum of 5% and maximum of 35% per campaign. ROAS could not be included because revenue is unavailable. See `outputs/executive_memo.md`.
 
 ## Evidence and findings
 - **Pairwise CPA:** 9 of 10 comparisons significant before and after both corrections.
@@ -18,6 +18,11 @@ Run `lab_statistical_analysis_STUDENT.ipynb` from top to bottom. The notebook lo
 - **Highest observed conversion rate:** `10341182` (23.64%); **lowest:** `17686799` (5.17%).
 - **Lowest observed mean daily CPA:** `30801593` (~0.0012 in anonymised cost units).
 - **Power simulation:** Under the notebook's assumed 15% daily CPA standard deviation, 31 days are sufficient for simulated 15–20% differences at 80% power, but not for 5–10% differences. This simulation is assumption-dependent.
+
+### Decision considerations
+- **Ranking fairness:** Campaigns 5061834 and 17686799 have no significant CPA difference (p ≈ 0.7597), despite receiving different rankings.
+- **Budget scalability:** Campaign 30801593 receives the highest allocation, but its ability to maintain the same CPA with increased spending is unverified.
+- **Practical significance:** Statistical significance does not necessarily imply financial importance. Actual costs, revenue and profitability must be considered.
 
 ## Illustrative budget allocation
 | Campaign | Allocation | USD |
@@ -43,4 +48,4 @@ Run `lab_statistical_analysis_STUDENT.ipynb` from top to bottom. The notebook lo
 The dataset uses anonymised costs and lacks revenue. Therefore, CPA cannot be interpreted as a verified dollar cost, and ROAS, profit and financial scalability cannot be established. The proposed budget is a **scenario for further testing**, not a validated investment decision. Results may also depend on attribution assumptions and dependence among observations.
 
 ## Reproduction check
-Before submission, run **Restart Kernel → Run All** in VS Code/Jupyter, verify there are no errors, and confirm all listed output files were regenerated. Remove any original instructor TODO code cells superseded by the completed cells.
+The notebook was executed from top to bottom in VS Code/Jupyter without errors. The generated charts, cleaned dataset and executive memo were verified in `outputs/`. The heatmap scale, CPA ranking logic and decision considerations were updated following feedback.
