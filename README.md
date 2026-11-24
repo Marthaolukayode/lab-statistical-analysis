@@ -1,12 +1,29 @@
 # Marketing Campaign Statistical Analysis
 
 Analysis of five anonymised marketing campaigns to assess CPA and conversion performance, test whether observed differences are statistically reliable, and develop a cautious, illustrative **$500,000 monthly budget allocation**.
+This repository contains only the materials for the Ironhack Statistical Analysis Lab, including the notebook, documentation, processed data, visualisations, and executive memo.
 
 ## How to run
+
+**Main notebook:** `lab_statistical_analysis_STUDENT.ipynb`
+
+**Generated outputs:** `outputs/` — processed CSV, six visualisations, and executive memo.
+
+**Reviewer evidence:** `lab_proof.md` — workflow, findings, limitations, and reproduction check.
+
 1. Open `lab_statistical_analysis_STUDENT.ipynb` in VS Code or Jupyter with a Python kernel.
-2. Download the Criteo attribution dataset and place `criteo_attribution_dataset.tsv.gz` in the project root. The source archive is excluded from GitHub because of its size. The processed data is available in `outputs/marketing_data.csv`.
+2. Download the [Criteo Attribution Dataset](https://huggingface.co/datasets/criteo/criteo-attribution-dataset) from Hugging Face and place `criteo_attribution_dataset.tsv.gz` in the project root. The source archive is excluded from GitHub because of its size. The processed data is available in `outputs/marketing_data.csv`.
 3. Install any missing Python dependencies used by the notebook (including `numpy`, `pandas`, `scipy`, `statsmodels`, `matplotlib`, and `seaborn`).
 4. **Restart Kernel → Run All**. Check that the notebook completes without errors and regenerates the files in `outputs/`.
+
+## Data preparation and sampling
+
+The Criteo Attribution Dataset was initially explored using the full dataset. A 2% sample was subsequently used to reduce processing time. The final statistical analysis and visualisations are based on the sampled data.
+
+The analysis covers five anonymised campaigns, with 155 campaign-day observations. Each campaign has 31 daily observations covering day indices 0–30, with no missing days within that range.
+
+Data preparation included checking missing values and data types. The sampled dataset contained 22 numeric columns (`int64` and `float64`) with zero missing values, so no missing-value imputation was required. Timestamps were stored as integers and used to derive day indices. Impressions, clicks, conversions and costs were then aggregated by campaign and day. The processed dataset is saved in `outputs/marketing_data.csv`.
+
 
 ## Method and results
 The notebook builds daily campaign metrics, visualises CPA and conversion-rate distributions, runs pairwise Welch t-tests with Cohen's d and Fisher's exact tests, applies Bonferroni and BH-FDR corrections, estimates simulated statistical power, and calculates bootstrap confidence intervals.
