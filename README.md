@@ -21,13 +21,15 @@ This repository contains only the materials for the Ironhack Statistical Analysi
 The Criteo Attribution Dataset was initially explored using the full dataset. A 2% sample was subsequently used to reduce processing time. The final statistical analysis and visualisations are based on the sampled data.
 
 The analysis covers five anonymised campaigns, with 155 campaign-day observations. Each campaign has 31 daily observations covering day indices 0–30, with no missing days within that range.
-
+One campaign has 30 valid CPA observations because CPA is undefined when conversions are zero.
 Data preparation included checking missing values and data types. The sampled dataset contained 22 numeric columns (`int64` and `float64`) with zero missing values, so no missing-value imputation was required. Timestamps were stored as integers and used to derive day indices. Impressions, clicks, conversions and costs were then aggregated by campaign and day. The processed dataset is saved in `outputs/marketing_data.csv`.
 
 
 ## Method and results
 The notebook builds daily campaign metrics, visualises CPA and conversion-rate distributions, runs pairwise Welch t-tests with Cohen's d and Fisher's exact tests, applies Bonferroni and BH-FDR corrections, estimates simulated statistical power, and calculates bootstrap confidence intervals.
 Conversion rate is consistently calculated as conversions divided by clicks. Click-through rate (CTR) is calculated as clicks divided by impressions. The executive memo includes bootstrap 95% confidence intervals for mean daily CPA and conversion rate across all five campaigns.
+
+The power analysis estimates the additional days needed to reach 80% statistical power using a simulation-based search up to 365 days. All nine statistically significant CPA comparisons achieved at least 80% simulated power with 31 days, requiring zero additional days under the model assumptions.
 
 **Key results:** 9/10 CPA comparisons and 9/10 conversion-rate comparisons were significant; all 9 remained significant after both multiple-comparison corrections. Campaign `30801593` had the lowest observed mean daily CPA, while `10341182` had the highest conversion rate (23.64%). See `lab_proof.md` for the evidence and `outputs/executive_memo.md` for the decision rationale.
 

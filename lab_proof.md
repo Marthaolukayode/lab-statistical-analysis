@@ -18,8 +18,7 @@ Run `lab_statistical_analysis_STUDENT.ipynb` from top to bottom. The notebook lo
 - **Highest observed conversion rate:** `10341182` (23.64%); **lowest:** `17686799` (5.17%).
 - **Lowest observed mean daily CPA:** `30801593` (~0.0012 in anonymised cost units).
 - **Confidence intervals:** Bootstrap 95% confidence intervals were calculated for mean daily CPA and mean daily conversion rate across all five campaigns (10 intervals total). The complete table is included in `outputs/executive_memo.md`.
-- **Power simulation:** Under the notebook's assumed 15% daily CPA standard deviation, 31 days are sufficient for simulated 15–20% differences at 80% power, but not for 5–10% differences. This simulation is assumption-dependent.
-
+- **Power simulation:** The notebook estimates additional days needed to reach 80% statistical power using a simulation-based search up to 365 days. All nine significant CPA comparisons achieved at least 80% simulated power with 31 days, requiring zero additional days under the model assumptions. Smaller hypothetical effects (5–10%) may require more observations.
 ### Decision considerations
 - **Ranking fairness:** Campaigns 5061834 and 17686799 have no significant CPA difference (p ≈ 0.7597), despite receiving different rankings.
 - **Budget scalability:** Campaign 30801593 receives the highest allocation, but its ability to maintain the same CPA with increased spending is unverified.
